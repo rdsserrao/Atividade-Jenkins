@@ -9,8 +9,13 @@ pipeline {
     stages {
         stage ('Criar Imagem') {
                 steps {
-                        sh ' docker build -t params.Imagem .'
+                        sh ' docker build -t jenkins1 .'
                 }   
             } 
+                    stage ('Criar Contentor') {
+                steps {
+                        sh ' docker run -p 8000:8000 -d --name cont1 jenkins1'
+                }   
+            }
         }
     }
