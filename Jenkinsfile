@@ -3,7 +3,7 @@ pipeline {
             parameters {
         string(name: 'Imagem', defaultValue: 'Jenkins1', description: 'Nome da imagem')
         string(name: 'Contentor', defaultValue: 'Cont1', description: 'Nome do contentor')
-        string(name: 'Porta', defaultValue: '8000', description: 'Número da porta')
+        string(name: 'Porta', defaultValue: '3000', description: 'Número da porta')
             }
 
     stages {
@@ -14,12 +14,12 @@ pipeline {
         }
         stage ('Criar Imagem') {
                 steps {
-                        sh ' docker build -t jenkins1 .'
+                        sh ' docker build -t "${Imagem}​​" .'
                 }   
             } 
                     stage ('Criar Contentor') {
                 steps {
-                        sh ' docker run -p 8000:3000 -d --name cont1 jenkins1'
+                        sh ' docker run -p 8000:"${Porta}​​" -d --name "${Contentor}​​" "${Imagem}​​"'
                 }   
             }
         }
