@@ -8,8 +8,8 @@ pipeline {
 
     stages {
         stage ('Criar Imagem') {
-                docker {
-                        image params.Imagem
+                steps {
+                        sh ' docker build -t params.Imagem .'
                 }   
             } 
         }
