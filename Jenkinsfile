@@ -14,7 +14,7 @@ pipeline {
             } 
                     stage ('Criar Contentor') {
                 steps {
-                        sh ' docker run -p 8000:8000 -d --name cont1 jenkins1'
+                        sh ' docker run -p 8000:3000 -d --name cont1 jenkins1'
                 }   
             }
         }
