@@ -1,7 +1,7 @@
 pipeline {
     agent any
             parameters {
-        string(name: 'Imagem', defaultValue: 'jenkins1', description: 'Nome da imagem', trim: true)
+        string defaultValue: 'jenkins1', description: 'Nome da Imagem', name: 'Imagem', trim: true
         string(name: 'Contentor', defaultValue: 'cont1', description: 'Nome do contentor', trim: true)
         string(name: 'Porta', defaultValue: '3000', description: 'Número da porta', trim: true)
             }
