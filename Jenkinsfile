@@ -19,7 +19,7 @@ pipeline {
             } 
                     stage ('Criar Contentor') {
                 steps {
-                        sh ' docker run -p 8000:"${Porta}​​" -d --name "${Contentor}​​" "${Imagem}​​"'
+                        sh ' docker run -p "${Porta}​​":3000 -d --name "${Contentor}​​" "${Imagem}​​"'
                 }   
             }
         }
