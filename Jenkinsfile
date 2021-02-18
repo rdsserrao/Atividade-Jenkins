@@ -14,12 +14,12 @@ pipeline {
         }
         stage ('Criar Imagem') {
                 steps {
-                        sh ' docker build -t "${Imagem}​​" .'
+                        sh 'docker build -t "${Imagem}​​" .'
                 }   
             } 
                     stage ('Criar Contentor') {
                 steps {
-                        sh ' docker run -p "${Porta}​​":3000 -d --name "${Contentor}​​" "${Imagem}​​"'
+                        sh 'docker run -p "${Porta}​​":3000 -d --name "${Contentor}​​" "${Imagem}​​"'
                 }   
             }
         }
