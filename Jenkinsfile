@@ -7,7 +7,7 @@ pipeline {
             }
 
     stages {
-        stage('Criar Imagem') {
+        stage ('Criar Imagem') {
             agent {
                 docker {
                         image params.Imagem
