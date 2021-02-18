@@ -7,6 +7,11 @@ pipeline {
             }
 
     stages {
+        stage('Clean') {
+            steps {
+        cleanWs()
+    }
+        }
         stage ('Criar Imagem') {
                 steps {
                         sh ' docker build -t jenkins1 .'
