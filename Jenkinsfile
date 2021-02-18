@@ -8,11 +8,9 @@ pipeline {
 
     stages {
         stage ('Criar Imagem') {
-            agent {
                 docker {
                         image params.Imagem
                 }   
             } 
         }
     }
-}
