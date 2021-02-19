@@ -1,29 +1,33 @@
 pipeline {
     agent any
-            parameters {
-                string(name: 'IMAGEM', defaultValue: 'jenkins1', description: 'Nome da imagem')
-                string(name: 'CONTENTOR', defaultValue: 'cont1', description: 'Nome do contentor')
-                string(name: 'PORTA', defaultValue: '3000', description: 'Número da porta')
+        parameters { 
+        string(name: 'DOCKER_IMAGE_NAME', defaultValue: 'nodejs', description: 'Docker Image')
+        string(name: 'DOCKER_CONTAINER_NAME', defaultValue: 'nodejs', description: 'Docker Container Name')
+        string(name: 'PORTA_NR', defaultValue: '3000', description: 'Número da porta')
+    	}
+    // Apaga os dados do Workspace usando o plugin Workspace Cleanup Plugin
+    stages {
+        stage ('CleanResources') {
+            agent any
+            steps
+            {
+                cleanWs()
             }
-
-            stages {
-                stage('Clean') {
-                    agent any
-                    steps {
-                        cleanWs()
-                    }
-                }
-                stage ('Criar Imagem') {
-                    agent any
-                    steps {
-                        sh 'docker build -t "${Imagem}​​" .'
-                    }   
-                } 
-                stage ('Criar Contentor') {
-                    agent any
-                    steps {
-                        sh 'docker run -p "${Porta}​​":3000 -d --name "${Contentor}​​" "${Imagem}​​"'
-                    }   
+        }
+    // Criar a imagem docker
+        stage ('Build Docker Image') {
+                agent any
+                steps {
+                        sh 'docker build -t "${DOCKER_IMAGE_NAME}" .'
                 }
             }
-}
+    // Inicia o container
+            stage ('Run Docker Container') {
+                agent any
+                steps {
+                    sh 'docker rm -f "${DOCKER_IMAGE_NAME}"'
+                    sh 'docker run -d -p "${PORTA_NR}":3000 --name "${DOCKER_CONTAINER_NAME}" "${DOCKER_IMAGE_NAME}"'
+                }
+            }
+        }
+    }
