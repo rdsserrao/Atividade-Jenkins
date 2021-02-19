@@ -21,7 +21,7 @@ pipeline {
                 stage ('Criar Contentor') {
                     agent any
                     steps {
-                        sh 'docker run -p "${PORTA}​​":3000 -d --name "${CONTENTOR}​​" "${IMAGEM}​​"'
+                        sh 'docker run -p "${PORTA}":3000 -d --name "${CONTENTOR}" "${IMAGEM}"'
                     }   
                 }
             }
