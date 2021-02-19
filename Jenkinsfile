@@ -15,7 +15,7 @@ pipeline {
                 stage ('Criar Imagem') {
                     agent any
                     steps {
-                        sh 'docker build -t "${IMAGEM}​​" .'
+                        sh 'docker build -t "${IMAGEM}" .'
                     }   
                 } 
                 stage ('Criar Contentor') {
