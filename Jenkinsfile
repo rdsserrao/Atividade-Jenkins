@@ -1,9 +1,9 @@
 pipeline {
     agent any
             parameters {
-                string(name: 'Imagem', defaultValue: 'jenkins1', description: 'Nome da imagem')
-                string(name: 'Contentor', defaultValue: 'cont1', description: 'Nome do contentor')
-                string(name: 'Porta', defaultValue: '3000', description: 'Número da porta')
+                string(name: 'IMAGEM', defaultValue: 'jenkins1', description: 'Nome da imagem')
+                string(name: 'CONTENTOR', defaultValue: 'cont1', description: 'Nome do contentor')
+                string(name: 'PORTA', defaultValue: '3000', description: 'Número da porta')
             }
 
             stages {
