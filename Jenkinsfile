@@ -8,16 +8,19 @@ pipeline {
 
             stages {
                 stage('Clean') {
+                    agent any
                     steps {
                         cleanWs()
                     }
                 }
                 stage ('Criar Imagem') {
+                    agent any
                     steps {
                         sh 'docker build -t "${Imagem}​​" .'
                     }   
                 } 
                 stage ('Criar Contentor') {
+                    agent any
                     steps {
                         sh 'docker run -p "${Porta}​​":3000 -d --name "${Contentor}​​" "${Imagem}​​"'
                     }   
